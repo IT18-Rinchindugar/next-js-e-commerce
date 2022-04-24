@@ -29,6 +29,7 @@ function ProductPageContainer({ productData, preview }) {
     vendor,
     categories,
     slug,
+    barcode,
   } = product;
   return (
     <ProductPage
@@ -42,6 +43,7 @@ function ProductPageContainer({ productData, preview }) {
       vendor={vendor}
       categories={categories}
       slug={slug?.current}
+      barcode={barcode}
     />
   );
 }
