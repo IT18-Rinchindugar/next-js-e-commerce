@@ -12,6 +12,11 @@ export default {
       type: "string",
     },
     {
+      name: "barcode",
+      title: "Barcode",
+      type: "number",
+    },
+    {
       title: "Main image",
       name: "mainImage",
       type: "image",
