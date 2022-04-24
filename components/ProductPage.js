@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { urlFor, PortableText, getClient } from "../utils/sanity";
+import { Polygon, PolygonDown, SmallStar } from "./icons";
+import Image from "next/image";
 
 function ProductPage(props) {
+  const { title, defaultProductVariant, mainImage, body, barcode } = props;
   const [count, setCount] = useState(1);
   const handleCount = (value) =>
     !(count === 0 && value === -1) ? setCount(count + value) : count;
-  const { title, defaultProductVariant, mainImage, body, barcode } = props;
   return (
     <div className="container mx-auto px-6">
       <div className="md:flex md:items-center">
@@ -93,8 +95,113 @@ function ProductPage(props) {
         </div>
       </div>
       <div className="mt-16 md:w-2/3">
-        <h3 className="text-gray-600 text-2xl font-medium">Description</h3>
-        {body && <PortableText blocks={body?.en} className="text-gray-600" />}
+        <h3 className="text-gray-600 text-2xl font-medium">
+          Хэрэглэгчийн сэтгэгдлүүд
+        </h3>
+        <div className="flex flex-row items-center rounded my-4">
+          <div>
+            <img
+              src="https://user-images.trustpilot.com/6262794dad301800124141d5/64x64.png"
+              width={80}
+              height={80}
+            />
+          </div>
+          <div className="mx-8 w-2/3 flex flex-row justify-between">
+            <div>
+              <h1>Сайн байна уу? </h1>
+              <h1>Зочин</h1>
+            </div>
+            <div className="flex flex-row">
+              {[1, 2, 3, 4, 5].map((item) => (
+                <div>
+                  <SmallStar width={24} height={24} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div>
+          <textarea
+            rows="4"
+            class=" w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-300 focus:border-blue-300 dark:bg-gray-500 dark:border-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-400 dark:focus:border-blue-400 p-4"
+            placeholder="Leave a review..."
+          ></textarea>
+
+          <button className="px-8 py-2 bg-indigo-600 text-white text-sm font-medium rounded hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
+            Илгээх
+          </button>
+        </div>
+        <div className="mt-4">
+          <div className="flex flex-row items-center bg-gray-100 rounded p-4">
+            <div className="mt-4">
+              <Polygon />
+              <h1 className="my-2">12</h1>
+              <PolygonDown />
+            </div>
+            <div className="ml-6 mt-4 flex flex-row items-center ">
+              <div>
+                <img
+                  src="https://user-images.trustpilot.com/6262794dad301800124141d5/64x64.png"
+                  width={80}
+                  height={80}
+                  className="rounded-full"
+                />
+              </div>
+              <div className="ml-4">
+                <div className="flex flex-row w-48 justify-between">
+                  <h3>Марал</h3>
+                  <div className="flex flex-row">
+                    <SmallStar width={24} height={24} />
+                    <h3>4/5</h3>
+                  </div>
+                  <h3 style={{ color: "#10b981" }}>ЭЕРЭГ</h3>
+                </div>
+                <div>
+                  <h3>
+                    <span>04/22/2022</span> * Маш түргэн шуурхай хямд, амар
+                    шийдлээр өөрийн онлайн шопыг бий болгон өндөр бүтээмжтэй
+                    ажилж байгаад ...
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-row items-center bg-gray-100 rounded p-4 mt-4">
+            <div className="mt-4">
+              <Polygon />
+              <h1 className="my-2">12</h1>
+              <PolygonDown />
+            </div>
+            <div className="ml-6 mt-4 flex flex-row items-center ">
+              <div>
+                <img
+                  src="https://user-images.trustpilot.com/6262794dad301800124141d5/64x64.png"
+                  width={80}
+                  height={80}
+                  className="rounded-full"
+                />
+              </div>
+              <div className="ml-4">
+                <div className="flex flex-row w-40 justify-between">
+                  <h3>Марал</h3>
+                  <div className="flex flex-row">
+                    <SmallStar width={24} height={24} />
+                    <h3>4/5</h3>
+                  </div>
+                  <h3 style={{ color: "#10b981" }}>ЭЕРЭГ</h3>
+                </div>
+                <div>
+                  <h3>
+                    <span>04/22/2022</span> * Маш түргэн шуурхай хямд, амар
+                    шийдлээр өөрийн онлайн шопыг бий болгон өндөр бүтээмжтэй
+                    ажилж байгаад ...
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* {reviews && <PortableText blocks="TExt" className="text-gray-600" />} */}
       </div>
     </div>
   );

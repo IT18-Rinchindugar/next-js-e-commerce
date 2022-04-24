@@ -3,11 +3,14 @@ import { groq } from "next-sanity";
 import { useRouter } from "next/router";
 import ProductPage from "../../components/ProductPage";
 import { getClient, usePreviewSubscription } from "../../utils/sanity";
+// import { useEffect, useState } from "react";
+// import axios from "axios";
 
 const query = groq`*[_type == "product" && slug.current == $slug][0]`;
 
 function ProductPageContainer({ productData, preview }) {
   const router = useRouter();
+
   if (!router.isFallback && !productData?.slug) {
     return <Error statusCode={404} />;
   }
@@ -31,6 +34,27 @@ function ProductPageContainer({ productData, preview }) {
     slug,
     barcode,
   } = product;
+
+  // const [reviews, setReviews] = useState(null);
+  // const [loading, setLoading] = useState(true);
+  // const fetchProductReview = async (code) => {
+  //   setLoading(true);
+  //   await axios
+  //     .get(`https://json-server-123456789.herokuapp.com/reviews/${code}`)
+  //     .then((res) => {
+  //       setReviews(res.data);
+  //     })
+  //     .catch((res) => setLoading(true));
+  // };
+
+  // useEffect(async () => {
+  //   await fetchProductReview(barcode);
+  // }, [barcode]);
+
+  // if (!loading) {
+
+  // }
+
   return (
     <ProductPage
       id={_id}
